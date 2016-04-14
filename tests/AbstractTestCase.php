@@ -1,6 +1,6 @@
 <?php
 
-namespace CodePress\CodePosts\Tests;
+namespace CodePress\CodeUser\Tests;
 
 use Illuminate\Auth\AuthServiceProvider;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider;
@@ -27,7 +27,7 @@ abstract class AbstractTestCase extends TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  \Illuminate\Foundation\Application $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)
@@ -35,12 +35,13 @@ abstract class AbstractTestCase extends TestCase
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
         $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
 
         config(['auth' => require __DIR__ . '/../src/config/auth.php']);
+
     }
 
 }
