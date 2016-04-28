@@ -50,6 +50,7 @@ class UserCreatedEvent
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+        return $this;
     }
 
 }
