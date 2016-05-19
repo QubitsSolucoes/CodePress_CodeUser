@@ -22,13 +22,13 @@ class UsersController extends Controller
     public function index()
     {
         $users = $this->repository->all();
-        return $this->response->view('codeuser::index', compact('users'));
+        return $this->response->view('codeuser::admin.user.index', compact('users'));
     }
 
     public function create()
     {
         $users = $this->repository->all();
-        return view('codeuser::create', compact('users'));
+        return view('codeuser::admin.user.create', compact('users'));
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class UsersController extends Controller
     {
         $user = $this->repository->find($id);
         $users = $this->repository->all();
-        return $this->response->view('codeuser::edit', compact('user', 'users'));
+        return $this->response->view('codeuser::admin.user.edit', compact('user', 'users'));
     }
 
     public function update(Request $request, $id)

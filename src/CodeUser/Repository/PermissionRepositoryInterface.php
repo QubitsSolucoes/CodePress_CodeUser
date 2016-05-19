@@ -6,7 +6,7 @@ use CodePress\CodeDatabase\Contracts\CriteriaCollection;
 use CodePress\CodeDatabase\Contracts\RepositoryInterface;
 
 
-interface UserRepositoryInterface extends RepositoryInterface, CriteriaCollection
+interface PermissionRepositoryInterface extends RepositoryInterface, CriteriaCollection
 {
-    public function addRoles($id,array $roles);
+
 }

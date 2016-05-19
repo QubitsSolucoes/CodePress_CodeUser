@@ -8,7 +8,7 @@
         {!! Form::open(['method'=>'user', 'route'=>['admin.users.store']]) !!}
 
         <div class="form-group">
-            {!! Form::label('E-mail', "E-mail:") !!}
+            {!! Form::label('Email', "E-mail:") !!}
             {!! Form::text('email', null, ['class'=>'form-control']) !!}
         </div>
 
