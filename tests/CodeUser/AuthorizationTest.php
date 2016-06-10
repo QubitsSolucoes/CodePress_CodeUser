@@ -16,10 +16,6 @@ use Mockery as m;
 
 class AuthorizationRepositoryTest extends AbstractTestCase
 {
-    /**
-     * @var UserRepositoryInterface
-     */
-    private $repository;
 
     public function setUp()
     {

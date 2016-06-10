@@ -25,9 +25,6 @@ Route::group([
 
     Route::group(['prefix' => 'permissions', 'as' => 'permissions.'],function(){
         Route::get('/', ['uses' => 'Admin\PermissionsController@index', 'as' => 'index']);
-        Route::get('/create', ['uses' =>'Admin\PermissionsController@create', 'as' => 'create']);
-        Route::post('/store', ['uses' =>'Admin\PermissionsController@store', 'as' => 'store']);
-        Route::get('{id}/edit', ['uses' =>'Admin\PermissionsController@edit', 'as' => 'edit']);
-        Route::put('{id}/update', ['uses' =>'Admin\PermissionsController@update', 'as' => 'update']);
+        Route::get('{id}/view', ['uses' =>'Admin\PermissionsController@view', 'as' => 'edit']);
     });
 });

@@ -40,8 +40,7 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = $this->repository->find($id);
-        $roles = $this->repository->all();
-        return $this->response->view('codeuser::admin.role.edit', compact('role', 'roles'));
+        return $this->response->view('codeuser::admin.role.edit', compact('role'));
     }
 
     public function update(Request $request, $id)

@@ -25,31 +25,10 @@ class PermissionsController extends Controller
         return $this->response->view('codeuser::admin.permission.index', compact('permissions'));
     }
 
-    public function create()
-    {
-        $permissions = $this->repository->all();
-        return view('codeuser::admin.permission.create', compact('permissions'));
-    }
-
-    public function store(Request $request)
-    {
-        $this->repository->create($request->all());
-        return redirect()->route('admin.permissions.index');
-    }
-
-    public function edit($id)
+    public function show($id)
     {
         $permission = $this->repository->find($id);
-        $permissions = $this->repository->all();
-        return $this->response->view('codeuser::admin.permission.edit', compact('permission', 'permissions'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $data = $request->all();
-
-        $category = $this->repository->update($data, $id);
-        return redirect()->route('admin.permissions.index');
+        return $this->response->view('codeuser::admin.permission.show', compact('permission'));
     }
 
 }

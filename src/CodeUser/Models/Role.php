@@ -8,6 +8,9 @@ class Role extends Model
 {
 
     const ROLE_ADMIN = "Admin";
+    const ROLE_EDITOR = "Editor";
+    const ROLE_REDATOR = "Redator";
+
     protected $table = "codepress_roles";
 
     protected $fillable = [

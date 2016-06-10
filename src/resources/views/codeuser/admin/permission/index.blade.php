@@ -5,9 +5,6 @@
     <div class="container">
         <h3>Permissions</h3>
 
-        <a href="{{ route('admin.permissions.create') }}">Create Permission</a>
-        <br><br>
-
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -22,8 +19,8 @@
                         <td>{{$permission->id}}</td>
                         <td>{{$permission->name}}</td>
                         <td>
-                            <a name="link_edit_permission_{{$key}}" href="{{route('admin.permissions.edit', ['id'=>$permission->id])}}">
-                                Edit
+                            <a name="link_view_permission_{{$key}}" href="{{route('admin.permissions.edit', ['id'=>$permission->id])}}">
+                                View
                             </a>
                         </td>
                     </tr>
