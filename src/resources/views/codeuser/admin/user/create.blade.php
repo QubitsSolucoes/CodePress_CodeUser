@@ -14,7 +14,12 @@
 
         <div class="form-group">
             {!! Form::label('Username', "username") !!}
-            {!! Form::textarea('username', null, ['class'=>'form-control']) !!}}
+            {!! Form::textarea('username', null, ['class'=>'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('roles[]', "Roles:") !!}
+            {!! Form::select('roles[]', $roles, null,['class'=>'form-control', 'multiple' => 'multiple']) !!}
         </div>
 
         <div class="form-group">

@@ -20,7 +20,7 @@
                 @foreach($users as $key => $user)
                     <tr>
                         <td>{{$user->id}}</td>
-                        <td>{{$user->title}}</td>
+                        <td>{{$user->email}}</td>
                         <td>
                             <a name="link_edit_user_{{$key}}" href="{{route('admin.users.edit', ['id'=>$user->id])}}">
                                 Edit

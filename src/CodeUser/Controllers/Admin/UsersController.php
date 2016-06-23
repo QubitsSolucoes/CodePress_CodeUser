@@ -3,6 +3,7 @@
 namespace CodePress\CodeUser\Controllers\Admin;
 
 use CodePress\CodeUser\Controllers\Controller;
+use CodePress\CodeUser\Repository\RoleRepositoryInterface;
 use CodePress\CodeUser\Repository\UserRepositoryInterface;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
@@ -12,11 +13,19 @@ class UsersController extends Controller
 
     private $repository;
     private $response;
+    /**
+     * @var RoleRepositoryInterface
+     */
+    private $roleRepository;
 
-    public function __construct(ResponseFactory $response, UserRepositoryInterface $repository)
-    {
+    public function __construct(
+        ResponseFactory $response,
+        UserRepositoryInterface $repository,
+        RoleRepositoryInterface $roleRepository
+    ) {
         $this->repository = $repository;
         $this->response = $response;
+        $this->roleRepository = $roleRepository;
     }
 
     public function index()
@@ -27,8 +36,9 @@ class UsersController extends Controller
 
     public function create()
     {
+        $roles = $this->roleRepository->lists('name', 'id');
         $users = $this->repository->all();
-        return view('codeuser::admin.user.create', compact('users'));
+        return view('codeuser::admin.user.create', compact('users','roles'));
     }
 
     public function store(Request $request)
