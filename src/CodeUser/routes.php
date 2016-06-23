@@ -25,6 +25,6 @@ Route::group([
 
     Route::group(['prefix' => 'permissions', 'as' => 'permissions.'],function(){
         Route::get('/', ['uses' => 'Admin\PermissionsController@index', 'as' => 'index']);
-        Route::get('{id}/view', ['uses' =>'Admin\PermissionsController@view', 'as' => 'edit']);
+        Route::get('{id}/view', ['uses' =>'Admin\PermissionsController@show', 'as' => 'show']);
     });
 });

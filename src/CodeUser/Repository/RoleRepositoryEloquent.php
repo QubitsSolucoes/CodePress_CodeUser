@@ -14,10 +14,10 @@ class RoleRepositoryEloquent extends AbstractRepository implements RoleRepositor
      */
     private $permissionRepository;
 
-    public function __construct(PermissionRepositoryInterface $permssionRepository)
+    public function __construct(PermissionRepositoryInterface $permissionRepository)
     {
         parent::__construct();
-        $this->permissionRepository = $permssionRepository;
+        $this->permissionRepository = $permissionRepository;
     }
 
     public function model()

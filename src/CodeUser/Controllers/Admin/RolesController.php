@@ -27,8 +27,7 @@ class RolesController extends Controller
 
     public function create()
     {
-        $roles = $this->repository->all();
-        return view('codeuser::admin.role.create', compact('roles'));
+        return view('codeuser::admin.role.create');
     }
 
     public function store(Request $request)
@@ -47,7 +46,7 @@ class RolesController extends Controller
     {
         $data = $request->all();
 
-        $category = $this->repository->update($data, $id);
+        $this->repository->update($data, $id);
         return redirect()->route('admin.roles.index');
     }
 

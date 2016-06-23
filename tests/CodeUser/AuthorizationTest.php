@@ -44,7 +44,7 @@ class AuthorizationRepositoryTest extends AbstractTestCase
 
     public function test_can_create_permission(){
         $this->createRoles();
-        $this->createPermission();
+        $this->createPermissions();
         $this->assertCount(3,$this->app->make(PermissionRepositoryInterface::class)->all());
         $this->app->make(RoleRepositoryInterface::class)->addPermissions(1,[1,2]);
         $this->app->make(RoleRepositoryInterface::class)->addPermissions(2,[1]);
@@ -78,7 +78,7 @@ class AuthorizationRepositoryTest extends AbstractTestCase
         ]);
     }
 
-    protected function createPermission(){
+    protected function createPermissions(){
         $this->app->make(PermissionRepositoryInterface::class)->create([
             'name' => 'insert',
         ]);
