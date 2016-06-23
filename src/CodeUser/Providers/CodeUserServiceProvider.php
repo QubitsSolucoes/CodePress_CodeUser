@@ -48,5 +48,6 @@ class CodeUserServiceProvider extends ServiceProvider
             return new Router();
         });
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(AuthServiceProvider::class);
     }
 }
