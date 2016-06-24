@@ -23,6 +23,7 @@ class RolesController extends Controller
         RoleRepositoryInterface $repository,
         PermissionRepositoryInterface $permissionRepository
     ) {
+        $this->authorize('access_users');
         $this->repository = $repository;
         $this->response = $response;
         $this->permissionRepository = $permissionRepository;
