@@ -3,6 +3,7 @@
 namespace CodePress\CodeUser\Controllers\Admin;
 
 use CodePress\CodeUser\Controllers\Controller;
+use CodePress\CodeUser\Repository\PermissionRepositoryInterface;
 use CodePress\CodeUser\Repository\RoleRepositoryInterface;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
@@ -12,11 +13,19 @@ class RolesController extends Controller
 
     private $repository;
     private $response;
+    /**
+     * @var PermissionRepositoryInterface
+     */
+    private $permissionRepository;
 
-    public function __construct(ResponseFactory $response, RoleRepositoryInterface $repository)
-    {
+    public function __construct(
+        ResponseFactory $response,
+        RoleRepositoryInterface $repository,
+        PermissionRepositoryInterface $permissionRepository
+    ) {
         $this->repository = $repository;
         $this->response = $response;
+        $this->permissionRepository = $permissionRepository;
     }
 
     public function index()
@@ -27,26 +36,30 @@ class RolesController extends Controller
 
     public function create()
     {
-        return view('codeuser::admin.role.create');
+        $permissions = $this->permissionRepository->lists('name', 'id');
+        return view('codeuser::admin.role.create', compact('permissions'));
     }
 
     public function store(Request $request)
     {
-        $this->repository->create($request->all());
+        $role = $this->repository->create($request->all());
+        $this->repository->addPermissions($role->id, $request->get('permissions'));
         return redirect()->route('admin.roles.index');
     }
 
     public function edit($id)
     {
+        $permissions = $this->permissionRepository->lists('name', 'id');
         $role = $this->repository->find($id);
-        return $this->response->view('codeuser::admin.role.edit', compact('role'));
+        return $this->response->view('codeuser::admin.role.edit', compact('role', 'permissions'));
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->all();
 
-        $this->repository->update($data, $id);
+        $role = $this->repository->update($data, $id);
+        $this->repository->addPermissions($role->id, $request->get('permissions'));
         return redirect()->route('admin.roles.index');
     }
 

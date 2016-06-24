@@ -18,7 +18,6 @@
         </div>
 
         <div class="form-group">
-            <?php //dd($user->roles->lists('id')) ?>
             {!! Form::label('roles[]', "Roles:") !!}
             {!! Form::select('roles[]', $roles, $user->roles->lists('id')->toArray(),
                 ['class'=>'form-control', 'multiple' => 'multiple']) !!}

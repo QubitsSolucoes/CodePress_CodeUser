@@ -45,7 +45,7 @@ class CreateDataAcl extends Migration
             'description' => 'Permissão para acesso a área de posts'
         ]);
 
-        $permissionPublishPost = Permission::create([
+        $permissionAcessUsers = Permission::create([
            'name' => 'access_users',
             'description' => 'Permissão para acesso a área de usuários'
         ]);
