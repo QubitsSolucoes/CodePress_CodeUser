@@ -8,13 +8,20 @@
         {!! Form::model($user, ['method'=>'put', 'route'=>['admin.users.update', $user->id]]) !!}
 
         <div class="form-group">
-            {!! Form::label('E-mail', "E-mail:") !!}
+            {!! Form::label('name', "Name:") !!}
+            {!! Form::text('name', null, ['class'=>'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('email', "E-mail:") !!}
             {!! Form::text('email', null, ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('Username', "Username:") !!}
-            {!! Form::textarea('content', null, ['class'=>'form-control']) !!}
+            <?php //dd($user->roles->lists('id')) ?>
+            {!! Form::label('roles[]', "Roles:") !!}
+            {!! Form::select('roles[]', $roles, $user->roles->lists('id')->toArray(),
+                ['class'=>'form-control', 'multiple' => 'multiple']) !!}
         </div>
 
         <div class="form-group">

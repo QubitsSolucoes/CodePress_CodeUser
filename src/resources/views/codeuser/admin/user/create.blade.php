@@ -8,13 +8,18 @@
         {!! Form::open(['method'=>'user', 'route'=>['admin.users.store']]) !!}
 
         <div class="form-group">
-            {!! Form::label('Email', "E-mail:") !!}
+            {!! Form::label('name', "Name:") !!}
+            {!! Form::text('name', null, ['class'=>'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('email', "E-mail:") !!}
             {!! Form::text('email', null, ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('Username', "username") !!}
-            {!! Form::textarea('username', null, ['class'=>'form-control']) !!}
+            {!! Form::label('password', "Password:") !!}
+            {!! Form::password('password', ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">

@@ -38,27 +38,31 @@ class UsersController extends Controller
     {
         $roles = $this->roleRepository->lists('name', 'id');
         $users = $this->repository->all();
-        return view('codeuser::admin.user.create', compact('users','roles'));
+        return view('codeuser::admin.user.create', compact('users', 'roles'));
     }
 
     public function store(Request $request)
     {
-        $this->repository->create($request->all());
+        $user = $this->repository->create($request->all());
+        $this->repository->addRoles($user->id,$request->get('roles'));
         return redirect()->route('admin.users.index');
     }
 
     public function edit($id)
     {
+        $roles = $this->roleRepository->lists('name', 'id');
         $user = $this->repository->find($id);
-        $users = $this->repository->all();
-        return $this->response->view('codeuser::admin.user.edit', compact('user', 'users'));
+        return $this->response->view('codeuser::admin.user.edit', compact('user', 'roles'));
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
-        $category = $this->repository->update($data, $id);
+        if (isset($data['password'])) {
+            unset($data['password']);
+        }
+        $user = $this->repository->update($data, $id);
+        $this->repository->addRoles($user->id,$request->get('roles'));
         return redirect()->route('admin.users.index');
     }
 
